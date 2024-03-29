@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>    
+    .todolist {
+        width: 500px;
+        min-height: 300px;
+        border: 2px solid white;
+        border-radius: 0px 0px 100px 100px;
+        padding: 20px 20px 100px 20px;
+        margin-top: 30px;
+        background-image: radial-gradient(rgb(176, 115, 233), blueviolet);
+        
+
+    }
+
+    .todolist li {
+        color: white;
+        font-size: 24px;
+        margin-left: 5px;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid white;
+
+
+    }
+
+    .close{
+        position: absolute;
+        left: 60rem;
+        top: auto ;
+        width: 36px;
+        height: 30px;
+        background-color: royalblue;
+        border: none;
+
+    }
+    .close:hover{
+
+        background-color: orangered;
+        border-radius: 2px;
+        width: 35px;
+        border: none;
+    }
+    li{
+        background-color: lightcoral;
+        height: 30px;
+        color:white ;
+
+        list-style: none;
+        width: 100%;
+/*        font-size: large;*/
+        font-weight: bold;
+    }
+    li:nth-child(even){
+        background-color: skyblue;
+       
+    }
+    li:nth-child(odd){
+        background-color: lightsalmon;
+       
+    }
+    body{
+    
+        background-color: blueviolet;
+        margin: 0%;
+        padding: 0%;
+        font-family: "Poppins", sans-serif;
+
+    }
+    .maindiv{
+        margin-top: 5%;
+        height: 50px;
+        width: 300px;
+        padding: 20px;;
+        background-color:rgb(186, 243, 136) ;
+    }
+    .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .input{
+        margin-top: 10px;
+        margin-top: 17px;
+        margin-left: 25px;
+        height: 24px;
+        width: 188px;
+    }
+    .add{
+        width: 63px;
+        height: 33px;
+        border-radius: 14px;
+        border: none;
+        background-color: rgb(224, 246, 181);
+    }
+    h1{
+        color: white;
+        font-size: 60px;
+        margin: 0 20px;
+    }
+</style>
+</head>
+<body>
+    <div class="main">
+        <h1>To Do List</h1> 
+            
+        <div class="maindiv">
+           
+            
+            <input type="text" id="text" class="input" placeholder="Enter text" >
+            <button onclick="add()" class="add">Add</button>
+        </div>
+        
+        <div  class="todolist">
+            <ul id="div">
+                
+            </ul>
+        </div>
+        
+    </div>
+
+   
+    <script>
+        function add(){
+            let a=document.getElementById('text').value
+            let elem=document.createElement('li')
+                let node=document.createTextNode(a)
+                let body=document.getElementById("div")
+                elem.appendChild(node)
+                
+            if (a==''){
+                alert('enter valid text')
+                
+            }
+            
+            else{
+                body.appendChild(elem)
+
+            }
+            document.getElementById('text').value=''
+            let span=document.createElement('button')
+            let close=document.createTextNode('x')
+            span.appendChild(close)
+            span.className='close'
+            elem.appendChild(span)
+
+            let remove=document.getElementsByClassName('close')
+             for (let i= 0; i< remove.length; i++) {
+              remove[i].onclick=function(){
+              var div= this.parentElement;
+                div.style.display = "none";       
+            
+        }
+       }
+
+
+        }
+        let output=document.getElementsByTagName('li')
+              for (let i= 0; i < output.length; i++) {
+               let span=document.createElement('span')
+              let close=document.createTextNode('x')
+              span.appendChild(close)
+              output[i].appendChild(span)
+      
+            }       
+        
+    
+
+    </script>
+</body>
+</html>
